@@ -1,0 +1,50 @@
+//DB Design
+
+1-Create db updown from Sqlite gui
+
+2-create tables schema "updown_schema_dump.sql"
+
+3-open sqlite3 db/updown.db
+	.databases
+	.help
+	
+4-run .read db/updown_schema_dump.sql
+
+5-Seeding some data in updown_data_dump.sql
+
+6-run .read db/updown_data_dump.sql
+
+________________________________________________________________________________________________________
+
+//DB Interface Design 
+1-working on the Engin class :
+	
+	import updown.database as database
+	engine = database.Engine()
+	
+	engine.remove_database()
+	engine.create_users_table()
+	engine.create_exchange_table()
+	engine.create_currencies_table()
+	engine.clear()
+	engine.create_tables()
+	engine.populate_tables()
+
+	con = engine.connect()
+	
+	con.get_curreny(1)
+	con.get_all_currencies()
+	con.delete_currency(2)
+	con.modify_currency(4,'GBPPP','Prito frito')
+	con.create_currency('yaro','ya ri yari ')
+	
+	con.get_username('KDC')
+	con.get_all_users()
+
+2-Connection class :
+
+
+
+
+
+________________________________________________________________________________________________________

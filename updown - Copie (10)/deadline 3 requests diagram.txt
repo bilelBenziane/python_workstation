@@ -1,0 +1,122 @@
+title GET User 
+
+Guest->User: User Request (Empty request body, parameter is user_id)
+note right of User: Ressource generates response
+User->Guest: User Details (Response body contains:\nusername, password, fullname \n or 404 Ressource not found \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+
+title PUT User 
+
+Guest->User: User Request (parameter is user_id \nRequest body : username, password, fullname)
+note right of User: Ressource generates response
+User->Guest: User Details (Response body contains:\200 successfully added \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+title DELETE User 
+
+Guest->User: User Request (parameter is user_id \nRequest body : Empty body)
+note right of User: Ressource generates response
+User->Guest: User Details (Response body contains:\200 successfully Deleted  \n or 404 Not found \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+
+
+
+title GET Users 
+
+Guest->User: User Request (No parameter \nRequest body : Empty body)
+note right of User: Ressource generates response
+User->Guest: User Details (Response body contains:\n each user user_id, username, password, fullname \n or 500 The system has failed ) 
+
+title POST Users 
+
+Guest->User: User Request (No parameter \nRequest body : username, password, fullname)
+note right of User: Ressource create new user and\n generates response
+User->Guest: User Details (Response body contains:\n 200 User added \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+
+
+title PUT currency 
+
+User->Currency: Currency Request (Paramete : currency_id \n Request body : \ncurrency_code and currency_name )
+note right of Currency: Ressource generates response
+Currency->User: Currency Response (Response body contains:\n 200 Currency updated \n or 404 Not found \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+title DELETE currency 
+
+User->Currency: Currency Request (Paramete : currency_id \n Request body : empty )
+note right of Currency: Ressource generates response
+Currency->User: Currency Response (Response body contains:\n 200 Currency Deleted \n or 404 Not found \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+
+
+title GET currencies 
+
+User->Currencies: Currencies Request (Paramete : empty \n Request body : empty )
+note right of Currencies: Ressource generates response
+Currencies->User: Currencies Response (Response body contains:\n Each Currency currency_id, currency_code and currency_name \n or 500 The system has failed ) 
+
+
+title POST currencies 
+
+User->Currencies: Currencies Request (Paramete : empty \n Request body : currency_code, currency_name )
+note right of Currencies: Ressource generates response
+Currencies->User: Currencies Response (Response body contains:\n 200 Currency Added \n or 404 Not found \n or 400 Malformed input format \n or 500 The system has failed ) 
+
+
+
+title GET Choice 
+
+User->Choice: Currencies Request (Paramete : username \n Request body : empty )
+note right of Choice: Ressource generates response
+Choice->User: Choice Response (Response body contains:\n Choice date_from, date_to, currecy_from and currency_to, choice_id   or 404 Not found \n or 400 Malformed input format \n  or 500 The system has failed ) 
+
+
+title DELETE Choice 
+
+User->Choice: Currencies Request (Paramete : choice_id \n Request body : empty )
+note right of Choice: Ressource generates response
+Choice->User: Choice Response (Response body contains:\n 20O choice deleted \n or 404 Not found \n or 500 The system has failed ) 
+
+
+
+title GET Choices 
+
+User->Choices: Choices Request (Paramete : empty \n Request body : empty )
+note right of Choices: Ressource generates response
+Choices->User: Choices Response (Response body contains:\n Each choice choice_id, currency_from, currency_to, date_from, date_to  \n or 500 The system has failed ) 
+
+
+title POST Choices 
+
+User->Choices: Choices Request (Paramete : empty \n Request body :\n currency_from, currency_to, date_from, date_to,user_id)
+note right of Choices: Ressource generates response
+Choices->User: Choices Response (Response body contains:\n 200 Choice Added \n or  400 Malformed input format \n or 500 The system has failed  ) 
+
+
+
+
+title GET Exchange 
+
+User->Exchange: Exchange Request (Paramete : exchange_id  \n Request body : empty )
+note right of Exchange: Ressource generates response
+Exchange->User: Exchange Response (Response body contains:\n Exchange date_fromcurrency_from, currency_to, exact_date and rate   or 404 Not found \n or 400 Malformed input format \n  or 500 The system has failed ) 
+
+
+title DELETE Exchange 
+
+User->Exchange: Exchange Request (Paramete : exchange_id \n Request body : empty )
+note right of Exchange: Ressource generates response
+Exchange->User: Exchange Response (Response body contains:\n 20O choice deleted \n or 404 Not found \n or 500 The system has failed ) 
+
+
+title GET Exchanges 
+
+User->Exchanges: Exchanges Request (Paramete : empty \n Request body : empty )
+note right of Exchanges: Ressource generates response
+Exchanges->User: Exchanges Response (Response body contains:\n Each Exchanges exchange_id, currency_from, currency_to, exact_date and rate  \n or 500 The system has failed ) 
+
+
+title POST Exchanges
+
+User->Exchanges: Exchanges Request (Paramete : empty \n Request body :\n currency_from, currency_to, exact_date and rate )
+note right of Exchanges: Ressource generates response
+Exchanges->User: Exchanges Response (Response body contains:\n 200 Exchange Added \n or  400 Malformed input format \n or 500 The system has failed  ) 

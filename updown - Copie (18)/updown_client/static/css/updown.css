@@ -1,0 +1,115 @@
+/* Makeshift CSS Reset */  
+{  
+    margin: 0;  
+    padding: 0; 
+
+}
+
+html { font-size: 115%; }
+
+body {padding-bottom: 5rem;}   
+
+#intro {
+	margin-bottom: 0.2rem;
+}
+
+.sidebar {
+	border-right-color: #9ec3e6;
+    border-right-width: .1rem;
+    border-right-style: solid; 
+}
+.sidebar-sticky{
+	position: sticky;
+	padding-top: .5rem;
+	height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+
+
+}
+#sidebar ul li.active {  
+    background-color: #9ec3e6;  
+}
+
+#sidebar .oi {
+	padding-right: 1rem;
+}
+
+#mainContent {
+	margin-top: 2rem;
+	font-size: 80%;
+}
+
+#user_restricted_form .commands .btn {
+	position:relative;
+	top: -2.2rem;
+}
+
+#new_user_form .commands .btn {
+	position:relative;
+	top: 1rem;
+	width: 8rem;
+}
+
+.section {  
+   padding-bottom: 2rem; 
+ }
+
+
+
+ .message .form_content {
+    padding: 0.5em;
+    padding-bottom: 2.2em;
+    margin-bottom: 1.5em;
+    border: 2px solid black;
+}
+
+#nickname {
+	font-size: 3.2em;
+}
+
+
+#deleteUser {
+    width: 3.3em;
+    height: 3.3em;
+    top: 2rem;
+    position: relative;
+}
+
+#messagesButton {
+    height: 3.3em;
+    top: 2rem;
+    position: relative;
+}
+}
+
+.footer-below{
+	
+	height:50px;
+	background-color: #E0E0E0;
+	line-height: 50px;
+	margin:0;
+	border:2ps solid red;
+	text-align:center;
+	background-color:green;
+}
+
+
+.shadow {
+  -webkit-box-shadow: 0px 0px 3px 3px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 0px 3px 3px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 0px 3px 3px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+}
+
+.card-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}

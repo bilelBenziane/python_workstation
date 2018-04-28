@@ -1,0 +1,5 @@
+{"currencycode":"ddwwd","currencyname":"mmmqq"}
+{"username":"bilder","fullname":"dandou cavi","password":"dabdou"}
+{"username":"bilder","from_currency":"avi","to_currency":"aze","date_from":"12345","date_to":"124533"}
+{"from_currency":"3","to_currency":"5","exact_date":"20180417","exchange_rate":"1.4"}
+

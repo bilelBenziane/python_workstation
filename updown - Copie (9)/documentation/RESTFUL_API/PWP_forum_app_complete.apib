@@ -1,0 +1,1814 @@
+FORMAT: 1A
+HOST: http://localhost:5000
+
+# PWP Updown App
+
+The currencies exchange Web API offers different functionalities to structure real-time currencies exchange. User can register in the application to get
+information with currencies exchange rates.
+
+# Group Link Relations 
+
+This document uses IANA standard link relations (http://www.iana.org/assignments/link-relations/link-relations.xhtml). In addition the following link relations have been defined:
+
+## add-currency [/link-relations/add-currency]
+
+Creates a new currency. Use via POST.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+## add-choice [/link-relations/add-choice]
+
+Creates a new choice for the user. Use via POST.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+## add-exchange [/link-relations/add-exchange]
+
+Creates a new currency. Use via POST.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+
+## add-user [/link-relations/add-user]
+
+Creates a new user. Use via POST.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+## delete [/link-relations/delete]
+
+Deletes the current context. Use via DELETE.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+
+## users-all [/link-relations/users-all]
+
+This action list all users registered in the updown. Each item is an instance of the type User defined in the profile [User Profile](profiles/user-profile). Can only be accessible with GET.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+## currencies-all [/link-relations/currencies-all]
+
+This action list all currencies registered in the updown. Each item is an instance of the type currency defined in the profile [Currency Profile](profiles/currency-profile). Can only be accessible with GET.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+## choices-all [/link-relations/choices-all]
+
+This action list all choices registered in the updown. Each item is an instance of the type choice defined in the profile [Choice Profile](profiles/choice-profile). Can only be accessible with GET.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+## exchange-all [/link-relations/exchange-all]
+
+This action list all exchanges registered in the updown. Each item is an instance of the type exchange defined in the profile [Exchange Profile](profiles/exchange-profile). Can only be accessible with GET.
+
+### GET
+
+Return the link relation description in HTML format
++ Response 200 (text/html)
+
+
+
+
+# Group Profiles
+
+## Currency Profile [/profiles/currency_profile]
+
+Profile definition for all currencies related resources.
+
+### Dependencies
+
+This profile inherits:
+ * Some link  relations from IANA Web linking [RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+
+### Link relations
+
+ * [delete](reference/link-relations/delete)
+ * [add-currency](reference/link-relations/add-currency)
+ * [currencies-all](reference/link-relations/currencies-all)
+ 
+Inherited from [IANA RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+ * `collection`: See [collection](http://tools.ietf.org/html/rfc6573). Only accessible through GET.
+ * `edit`: See [edit](https://tools.ietf.org/html/rfc5023#section-11.1). This link allows editing the user via PUT.
+ * `profile`: See [profile](https://tools.ietf.org/html/rfc6906). The link contains the location of the resource profile. 
+ 
+### Semantic Descriptors
+
+#### Data Type Message
+
+ * `currency_id` (integer): id of a currency. Auto generated.
+ * `currency_code` (string): code of the currency. Mendatory.  
+ * `currency_name` (string): name of the currency. Mendatory.
+
+
+### GET
+
+Return the Currency Profile in HTML format
++ Response 200 (text/html)
+
+
+## Error Profile [/profiles/error_profile]
+
+Profile definition for all errors messages in the system
+
++ Attributes 
+    + resource_url (string, required) - A url of the resource generating the error
+
+### GET
+
+Return the Error Profile in HTML format
++ Response 200 (text/html)
+
+
+## User Profile [/profiles/user_profile]
+
+Profile definition for all user resources
+
+### Dependencies
+
+This profile inherits:
+ * Some semantic descriptors from http://schema.org/Person
+ * Some link  relations from IANA Web linking [RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+
+### Link relations
+
+ * [delete](reference/link-relations/delete)
+ * [add-user](reference/link-relations/add-user)
+ * [users-all](reference/link-relations/users-all)
+ 
+Inherited from [IANA RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+ * `collection`: See [collection](http://tools.ietf.org/html/rfc6573). Only accessible through GET.
+ * `edit`: See [edit](https://tools.ietf.org/html/rfc5023#section-11.1). This link allows editing the user via PUT.
+ * `profile`: See [profile](https://tools.ietf.org/html/rfc6906). The link contains the location of the resource profile. 
+
+
+### Semantic Descriptors
+
+#### Data Type User
+
+ * `user_id` (integer): id of a user. Auto generated hen a new user is generated.
+ * `username` (string): username of a user. Mandatory.
+ * `fullname` (string): fullname of a user. Mandatory. 
+
+
+### GET
+
+Return the User Profile in HTML format
++ Response 200 (text/html)
+
+    
+
+## Choice Profile [/profiles/choice_profile]
+
+Profile definition for all choice resources
+
+### Dependencies
+
+This profile inherits:
+ * Some link  relations from IANA Web linking [RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+
+### Link relations
+
+ * [delete](reference/link-relations/delete)
+ * [add-choice](reference/link-relations/add-choice)
+ * [choices-all](reference/link-relations/choices-all)
+ 
+Inherited from [IANA RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+ * `collection`: See [collection](http://tools.ietf.org/html/rfc6573). Only accessible through GET.
+ * `edit`: See [edit](https://tools.ietf.org/html/rfc5023#section-11.1). This link allows editing the user via PUT.
+ * `profile`: See [profile](https://tools.ietf.org/html/rfc6906). The link contains the location of the resource profile. 
+
+
+### Semantic Descriptors
+
+#### Data Type Choice
+
+ * `choice_id` (integer): id of the user choice. Auto generated.
+ * `user_id` (string): id of the user in which the choice belogns to.
+ * `from_currency` (string): currency in which the conversion happens from. Mendatory. 
+ * `to_currency` (string): currency in which the conversion happens to. Mendatory. 
+ * `date_from` (integer): date used to filter the retrieved values.  
+ * `date_to` (integer):  date used to filter the retrieved values. 
+
+
+### GET
+
+Return the Choice Profile in HTML format
++ Response 200 (text/html)
+
+
+# Group Messages
+
+All these resources use the [Message Profile](reference/profiles/message-profile).
+
+In addition all error messages follow the profile defined [Error Profile](reference/profiles/error-profile)
+
+
+## Exchange Profile [/profiles/exchange_profile]
+
+Profile definition for all exchange resources
+
+### Dependencies
+
+This profile inherits:
+ * Some link  relations from IANA Web linking [RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+
+### Link relations
+
+ * [delete](reference/link-relations/delete)
+ * [add-exchange](reference/link-relations/add-exchange)
+ * [exchanges-all](reference/link-relations/exchanges-all)
+ 
+Inherited from [IANA RFC5988](http://www.iana.org/assignments/link-relations/link-relations.xhtml)
+ * `collection`: See [collection](http://tools.ietf.org/html/rfc6573). Only accessible through GET.
+ * `edit`: See [edit](https://tools.ietf.org/html/rfc5023#section-11.1). This link allows editing the user via PUT.
+ * `profile`: See [profile](https://tools.ietf.org/html/rfc6906). The link contains the location of the resource profile. 
+
+
+### Semantic Descriptors
+
+#### Data Type Choice
+
+ * `entry_id` (integer): id of the exchange unique choice. Auto generated.
+ * `from_currency` (string): currency in which the conversion happens from. Mendatory. 
+ * `to_currency` (string): currency in which the conversion happens to. Mendatory. 
+ * `exact_date` (integer): date of the coresponding exchange rate.  
+ * `rate` (Real):  the rate used for exchange from currency to another currency. 
+
+
+### GET
+
+Return the Exchange Profile in HTML format
++ Response 200 (text/html)
+
+
+# Group Currencies
+
+All these resources use the [Currency Profile](reference/profiles/currency-profile).
+
+In addition all error messages follow the profile defined [Error Profile](reference/profiles/error-profile)
+
+
+
+## Currencies List [/updown/api/currencies]
+
+A list of all currencies in the Updown. 
+
+### List Currencies [GET]
+
+Get a list of all currencies in the system
+
++ Relation: self    
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Currencies list was successfully retrieved.
+   
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                "items": [
+                    {
+                        "currency_id": "1",
+                        "currency_code": "EURO",            
+                        "currency_name": "EURO",            
+                        "@controls": {
+                            "self": {
+                                "href": "/forum/api/currencies/1/"
+                            },
+                            "profile": {
+                                "href": "/profiles/currency-profile/"
+                            }                            
+                        }
+                    },
+                    {
+                        "currency_id": "2",
+                        "currency_code": "USD",            
+                        "currency_name": "United States Dollar",            
+                        "@controls": {
+                            "self": {
+                                "href": "/forum/api/messages/2/"
+                            },
+                            "profile": {
+                                "href": "/profiles/currency-profile/"
+                            }                            
+                        }
+                    }
+                ],
+                
+                "@controls": {
+                    "self": {
+                        "href": "/forum/api/currencies/"
+                    },
+                    "updown:add-currency": {
+                        "title": "Create currency",
+                        "href": "/updown/api/currencies/",
+                        "encoding": "json",
+                        "method": "POST",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "currency_id": {
+                                    "title": "currency_id",
+                                    "description": "A unique id for the currency",
+                                    "type": "interger"
+                                },
+                                "currencyCode": {
+                                    "title": "currency_code",
+                                    "description": "code for the currency",
+                                    "type": "string"
+                                },
+                                "currencyName": {
+                                    "title": "currency_name",
+                                    "description": "complete name for the currency",
+                                    "type": "string"
+                                },
+                            },
+                            "required": ["currencyCode", "currencyName"]
+                        }
+                    }
+                }
+            }
+
+    
+### Create a new currency  [POST]       
+
+Create a new currency. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                "currency_code": "EURO",
+                "currency_name": "EURO"
+            }
+
++ Response 201
+
+    The currency is created correctly. 
+        
+    + Headers
+                
+            Location: URL of the new created resource
+
++ Response 400 (application/vnd.mason+json)
+
+    The currency is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include message title and body"
+                    ]
+                }
+                "resource_url": "/forum/api/currencies/"
+            }
+
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/forum/api/currencies/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the currency in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/forum/api/currencies/"
+            }
+        
+## Currency [/forum/api/currency/{currency_id}]
+
+A currency stored in the updown database. A currency contains an id  which describes unique entry,
+a code foe the currency and a name.
+
++ Parameters 
+    + currency_id: `1` (string)   - The id of the currency.
+
+### Receive currency information [GET]
+
+Receives the information of a particular currency
+
++ Relation: self
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Message correctly retrieved
+
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                "currency_code": "BTC",
+                "currency_name": "Bitcoin",
+
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/currencies/3/"
+                    },
+                    "profile": {
+                        "href": "/profiles/currency-profile/"
+                    },
+                    "collection": {
+                        "href": "/updown/api/currencies/"
+                    },
+                    "updown:delete": {
+                        "href": "/forum/api/currencies/3/",
+                        "method": "DELETE"
+                    },
+                }
+            }
+    
++ Response 404 (application/vnd.mason+json)
+
+    The currency with id `currency_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Message does not exist"
+                    "@messages": [
+                        "There is no a message with id msg-1"
+                    ]
+                }
+                "resource_url": "/updown/api/currencies/3/"
+            }
+
+### Delete a currency [DELETE]
+
+Delete a currency from the system
+
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 204
+
+    The currency was successfully deleted
+        
+    + Body 
+        
+
++ Response 404 (application/vnd.mason+json)
+
+    The currency with id `currency_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Message does not exist"
+                    "@messages": [
+                        "There is no a message with id msg-1"
+                    ]
+                }
+                "resource_url": "/forum/api/currencies/3"
+            }
+
+### Edit a currency [PUT]       
+
+Edit the information of a currency.
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                "currency_code": "EURO",
+                "currency_name": "EURO"
+            }
+
+
++ Response 204
+
+    The currency is modified correctly
+        
+    + Body
+
++ Response 400 (application/vnd.mason+json)
+
+    The currency is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include message title and body"
+                    ]
+                }
+                "resource_url": "/updown/api/currencies/3/"
+            }
+
++ Response 404 (application/vnd.mason+json)
+
+    The currency with id `currency_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "currency does not exist"
+                    "@messages": [
+                        "There is no a currency with id 3/"
+                    ]
+                }
+                "resource_url": "/updown/api/currencies/3"
+            }
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/currencies/3/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the message in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/currencies/api/currencies/3/"
+            }
+
+
+
+# Group Choices
+
+All these resources use the [Choice Profile](reference/profiles/choice-profile).
+
+In addition all error messages follow the profile defined [Error Profile](reference/profiles/error-profile)
+
+
+
+## Choice List [/updown/api/choices]
+
+A list of all choices in the Updown. 
+
+
+### List Choices [GET]
+
+Get a list of all choices in the system
+
++ Relation: self    
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Choices list was successfully retrieved.
+   
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                "items": [
+                    {
+                        "choice_id": "1",
+                        "user_id": "2",            
+                        "currency_from": "EURO",            
+                        "currency_to": "USD",            
+                        "date_from": "20180318",            
+                        "date_to": "20180412",            
+                        "@controls": {
+                            "self": {
+                                "href": "/updown/api/choices/1/"
+                            },
+                            "profile": {
+                                "href": "/profiles/choice-profile/"
+                            }                            
+                        }
+                    },
+                    {
+                        "choice_id": "2",
+                        "user_id": "2",            
+                        "currency_from": "EURO",            
+                        "currency_to": "BTC",            
+                        "date_from": "20180318",            
+                        "date_to": "20180412",            
+                        "@controls": {
+                            "self": {
+                                "href": "/forum/api/choices/2/"
+                            },
+                            "profile": {
+                                "href": "/profiles/choice-profile/"
+                            }                            
+                        }
+                    }
+                ],
+                
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/choices/"
+                    },
+                    "updown:add-choice": {
+                        "title": "Create choice",
+                        "href": "/updown/api/choices/",
+                        "encoding": "json",
+                        "method": "POST",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "choice_id": {
+                                    "title": "currency_id",
+                                    "description": "A unique id for the currency",
+                                    "type": "interger"
+                                },
+                                "from_currency": {
+                                    "title": "from_currency",
+                                    "description": "id of the currency",
+                                    "type": "string"
+                                },
+                                "to_currency": {
+                                    "title": "to_currency",
+                                    "description": "id of the currency",
+                                    "type": "string"
+                                },
+                                "date_from": {
+                                    "title": "date_from",
+                                    "description": "date",
+                                    "type": "string"
+                                },
+                                "date_to": {
+                                    "title": "date_to",
+                                    "description": "date",
+                                    "type": "string"
+                                },
+
+                            },
+                            "required": ["currency_from", "currency_to","date_from","date_to"]
+                        }
+                    }
+                }
+            }
+
+
+    
+### Create a new choice  [POST]       
+
+Create a new choice. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                        "choice_id": "2",
+                        "user_id": "2",            
+                        "currency_from": "EURO",            
+                        "currency_to": "BTC",            
+                        "date_from": "20180318",            
+                        "date_to": "20180412"           
+
+            }
+
++ Response 201
+
+    The choice is created correctly. 
+        
+    + Headers
+                
+            Location: URL of the new created resource
+
++ Response 400 (application/vnd.mason+json)
+
+    The choice is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include all choice fields"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/"
+            }
+
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the currency in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/"
+            }
+        
+
+## Currency [/forum/api/choice/{choice_id}]
+
+A choice stored in the updown database. A choice contains an id  which describes unique entry,
+a currency from which the convertion happens, a currency to which the convertion happens, a date_from and a date_to to set a time interval.
+
++ Parameters 
+    + choice_id: `1` (string)   - The id of the choice.
+
+### Receive choice information [GET]
+
+Receives the information of a particular choice
+
++ Relation: self
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Choice correctly retrieved
+
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                        "choice_id": "2",
+                        "user_id": "2",            
+                        "currency_from": "EURO",            
+                        "currency_to": "BTC",            
+                        "date_from": "20180318",            
+                        "date_to": "20180412",
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/choices/2/"
+                    },
+                    "profile": {
+                        "href": "/profiles/choice-profile/"
+                    },
+                    "collection": {
+                        "href": "/updown/api/choices/"
+                    },
+                    "updown:delete": {
+                        "href": "/updown/api/choices/3/",
+                        "method": "DELETE"
+                    },
+                }
+            }
+    
++ Response 404 (application/vnd.mason+json)
+
+    The currency with id `currency_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Choice does not exist"
+                    "@messages": [
+                        "There is no a choice with id 3"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/3/"
+            }
+            
+
+### Delete a choice [DELETE]
+
+Delete a choice from the system
+
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 204
+
+    The choice was successfully deleted
+        
+    + Body 
+        
+
++ Response 404 (application/vnd.mason+json)
+
+    The currency with id `choice_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Choice does not exist"
+                    "@messages": [
+                        "There is no a choice with id 3"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/3"
+            }
+
+
+
+### Edit a choice [PUT]       
+
+Edit the information of a choice.
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                
+                        "choice_id": "2",
+                        "user_id": "2",            
+                        "currency_from": "EURO",            
+                        "currency_to": "BTC",            
+                        "date_from": "20180318",            
+                        "date_to": "20180412"
+
+            }
+
+
++ Response 204
+
+    The choice is modified correctly
+        
+    + Body
+
++ Response 400 (application/vnd.mason+json)
+
+    The choice is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include choice all fields"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/3/"
+            }
+
++ Response 404 (application/vnd.mason+json)
+
+    The choice with id `choice_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "choice does not exist"
+                    "@messages": [
+                        "There is no a choice with id 3/"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/3"
+            }
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/3/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the choice in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/choices/3/"
+            }
+
+
+# Group Users
+
+All these resources use the [User Profile](reference/profiles/user-profile).
+
+In addition all error messages follow the profile defined [Error Profile](reference/profiles/error-profile)
+
+
+
+## User List [/updown/api/users]
+
+A list of all users in the Updown. 
+
+
+### List Users [GET]
+
+Get a list of all Users in the system
+
+
++ Relation: self    
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Users list was successfully retrieved.
+   
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                "items": [
+                    {
+                        "user_id": "1",
+                        "username": "Nadir",            
+                        "fullname": "Nadir bengana",            
+                        "@controls": {
+                            "self": {
+                                "href": "/updown/api/users/1/"
+                            },
+                            "profile": {
+                                "href": "/profiles/user-profile/"
+                            }                            
+                        }
+                    },
+                    {
+                        "user_id": "2",
+                        "username": "Redone",            
+                        "fullname": "Kaddari redone",            
+                        "@controls": {
+                            "self": {
+                                "href": "/updown/api/users/2/"
+                            },
+                            "profile": {
+                                "href": "/profiles/user-profile/"
+                            }                            
+                        }
+                    }
+                ],
+                
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/users/"
+                    },
+                    "updown:add-choice": {
+                        "title": "Create user",
+                        "href": "/updown/api/users/",
+                        "encoding": "json",
+                        "method": "POST",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user_id": {
+                                    "title": "user_id",
+                                    "description": "A unique id for the user",
+                                    "type": "interger"
+                                },
+                                "username": {
+                                    "title": "username",
+                                    "description": "username of the user",
+                                    "type": "string"
+                                },
+                                "fullname": {
+                                    "title": "fullname",
+                                    "description": "fullname of the user",
+                                    "type": "string"
+                                },
+
+                            },
+                            "required": ["username", "fullname"]
+                        }
+                    }
+                }
+            }
+
+
+    
+### Create a new user  [POST]       
+
+Create a new user. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                        "user_id": "2",
+                        "username": "nadir",            
+                        "fullname": "nadir bengana",            
+            }
+
++ Response 201
+
+    The user is created correctly. 
+        
+    + Headers
+                
+            Location: URL of the new created resource
+
++ Response 400 (application/vnd.mason+json)
+
+    The user is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include all user fields"
+                    ]
+                }
+                "resource_url": "/updown/api/users/"
+            }
+
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/users/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the user in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/users/"
+            }
+        
+
+## User [/forum/api/choice/{user_id}]
+
+A user stored in the updown database. A choice contains an id  which describes unique user,
+a usename, password and a fullname.
+
++ Parameters 
+    + user_id: `1` (string)   - The id of the user.
+
+### Receive choice information [GET]
+
+Receives the information of a particular user
+
++ Relation: self
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Choice correctly retrieved
+
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                        "user_id": "2",
+                        "username": "nadiro",            
+                        "password": "nadir",            
+                        "fullname": "denga nadir",            
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/users/2/"
+                    },
+                    "profile": {
+                        "href": "/profiles/user-profile/"
+                    },
+                    "collection": {
+                        "href": "/updown/api/users/"
+                    },
+                    "updown:delete": {
+                        "href": "/updown/api/users/3/",
+                        "method": "DELETE"
+                    },
+                }
+            }
+    
++ Response 404 (application/vnd.mason+json)
+
+    The user with id `user_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "User does not exist"
+                    "@messages": [
+                        "There is no a user with id 3"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3/"
+            }
+            
+
+### Delete a user [DELETE]
+
+Delete a user from the system
+
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 204
+
+    The user was successfully deleted
+        
+    + Body 
+        
+
++ Response 404 (application/vnd.mason+json)
+
+    The user with id `user_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "User does not exist"
+                    "@messages": [
+                        "There is no a User with id 3"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3"
+            }
+
+
+
+### Edit a user [PUT]       
+
+Edit the information of a user.
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                
+                        "user_id": "2",
+                        "username": "nadiro",            
+                        "password": "dandou",            
+                        "fullname": "nadir bengana"
+            }
+
+
++ Response 204
+
+    The user is modified correctly
+        
+    + Body
+
++ Response 400 (application/vnd.mason+json)
+
+    The user is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include choice all fields"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3/"
+            }
+
++ Response 404 (application/vnd.mason+json)
+
+    The user with id `user_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "user does not exist"
+                    "@messages": [
+                        "There is no a user with id 3/"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3"
+            }
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the user in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3/"
+            }
+
+
+# Group Exchanges
+
+All these resources use the [Exchange Profile](reference/profiles/exchange-profile).
+
+In addition all error messages follow the profile defined [Error Profile](reference/profiles/error-profile)
+
+
+
+## Exchange List [/updown/api/exchanges]
+
+A list of all exchanges in the Updown. 
+
+### List Exchanges [GET]
+
+Get a list of all Exchanges in the system
+
+
++ Relation: self    
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Users list was successfully retrieved.
+   
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                 "items": [
+                    {
+                        "entry_id": "1",
+                        "currency_from": "EUR",  
+                        "currency_to": "USD",       
+                        "exact_date":"20180328",
+                        "rate":"1.3",
+                        "@controls": {
+                            "self": {
+                                "href": "/updown/api/exchanges/1/"
+                            },
+                            "profile": {
+                                "href": "/profiles/exchange-profile/"
+                            }                            
+                        }
+                    },
+                    {
+                        "entry_id": "2",
+                        "currency_from": "EUR",  
+                        "currency_to": "BTC",       
+                        "exact_date":"20180328",
+                        "rate":"1.9",
+                        "@controls": {
+                            "self": {
+                                "href": "/updown/api/exchanges/2/"
+                            },
+                            "profile": {
+                                "href": "/profiles/exchange-profile/"
+                            }                            
+                        }
+                    },
+                    
+
+                 ],
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/exchages/"
+                    },
+                    "updown:add-choice": {
+                        "title": "Create exchage",
+                        "href": "/updown/api/exchanges/",
+                        "encoding": "json",
+                        "method": "POST",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "entry_id": {
+                                    "title": "entry_id",
+                                    "description": "A unique id for the entry",
+                                    "type": "interger"
+                                },
+                                "currency_from": {
+                                    "title": "currency_from",
+                                    "description": "currency",
+                                    "type": "string"
+                                },
+                                "currency_to": {
+                                    "title": "currency_to",
+                                    "description": "currency",
+                                    "type": "string"
+                                },
+                                "exact_date": {
+                                    "title": "exact_date",
+                                    "description": "date",
+                                    "type": "string"
+                                },
+                                "rate": {
+                                    "title": "rate",
+                                    "description": "ration of currency conversion",
+                                    "type": "Real"
+                                },
+
+                            },
+                            "required": ["currency_from", "currency_to","exact_date","rate"]
+                        }
+                    }
+                }
+            
+
+            
+            }
+
+
+
+
+    
+### Create a new exchange  [POST]       
+
+Create a new exchange. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                        "entry_id": "2",
+                        "currency_from": "USD",            
+                        "currency_to": "EUR",            
+                        "exact_date": "2018032",            
+                        "exchange_rate": "1.3",            
+            }
+
++ Response 201
+
+    The exchange is created correctly. 
+        
+    + Headers
+                
+            Location: URL of the new created resource
+
++ Response 400 (application/vnd.mason+json)
+
+    The exchange is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include all user fields"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/"
+            }
+
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the exchange in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/"
+            }
+
+        
+
+## Exchange [/forum/api/choice/{entry_id}]
+
+A exchange stored in the updown database. A choice contains an id  which describes unique entry,
+a currency_from, currency_to, exact_date and a rate.
+
++ Parameters 
+    + entry_id: `1` (string)   - The id of the echange.
+
+### Receive exchange information [GET]
+
+Receives the information of a particular exchange
+
++ Relation: self
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 200 (application/vnd.mason+json)
+
+    Exchange correctly retrieved
+
+    + Body 
+    
+            {
+                "@namespaces": {
+                    "updown": {
+                        "name": "/updown/link-relations/"
+                    }
+                },
+                
+                        "entry_id": "2",
+                        "currency_from": "EUR",            
+                        "currency_to": "USD",            
+                        "exact_date": "20180324",            
+                        "rate": "1.3",            
+                "@controls": {
+                    "self": {
+                        "href": "/updown/api/exchanges/2/"
+                    },
+                    "profile": {
+                        "href": "/profiles/exchange-profile/"
+                    },
+                    "collection": {
+                        "href": "/updown/api/exchanges/"
+                    },
+                    "updown:delete": {
+                        "href": "/updown/api/exchanges/3/",
+                        "method": "DELETE"
+                    },
+                }
+            }
+    
++ Response 404 (application/vnd.mason+json)
+
+    The exchange with id `entry_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Exchange does not exist"
+                    "@messages": [
+                        "There is no a exchange with id 1"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/1/"
+            }
+            
+
+### Delete a exchange [DELETE]
+
+Delete a exchange from the system
+
++ Request
+    
+    + Headers
+    
+            Accept: application/vnd.mason+json
+    
++ Response 204
+
+    The exchange was successfully deleted
+        
+    + Body 
+        
+
++ Response 404 (application/vnd.mason+json)
+
+    The exchange with id `entry_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Exchange does not exist"
+                    "@messages": [
+                        "There is no a Exchange with id 1"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3"
+            }
+
+
+
+
+### Edit a exchange [PUT]       
+
+Edit the information of a exchange.
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                
+                        "entry_id": "1",
+                        "currency_from": "USD",            
+                        "currency_to": "EUR",            
+                        "exact_date": "20180328"
+                        "rate": "1.3"
+            }
+
+
++ Response 204
+
+    The entry is modified correctly
+        
+    + Body
+
++ Response 400 (application/vnd.mason+json)
+
+    The user is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include choice all fields"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3/"
+            }
+
++ Response 404 (application/vnd.mason+json)
+
+    The exchange with id `entry_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "exchange does not exist"
+                    "@messages": [
+                        "There is no a exchange with id 1/"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3"
+            }
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the exchange in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3/"
+            }
+
+

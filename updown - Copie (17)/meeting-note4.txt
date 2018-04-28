@@ -1,0 +1,5 @@
+test the gets, test all methods
+possible error scenarios (test with wrong values, missing data, foreign key violations, currency doesn't exist...etc)
+return foreign key violation error instead of 500 ( and errors where you can give the client informations about it)
+use updown/api/users/username/choices instead
+use updown/api/currencies/currenyid instead

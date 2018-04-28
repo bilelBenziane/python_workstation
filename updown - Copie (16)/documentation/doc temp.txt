@@ -1,0 +1,96 @@
+
+
+
+### Edit a exchange [PUT]       
+
+Edit the information of a exchange.
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/vnd.mason+json
+        
+    + Body 
+    
+            {
+                
+                        "entry_id": "1",
+                        "currency_from": "USD",            
+                        "currency_to": "EUR",            
+                        "exact_date": "20180328"
+                        "rate": "1.3"
+            }
+
+
++ Response 204
+
+    The entry is modified correctly
+        
+    + Body
+
++ Response 400 (application/vnd.mason+json)
+
+    The user is not well formed. Some of the parameters is not correctly received. 
+    
+    + Body
+    
+            {
+                "@error": {
+                    "@message": "Wrong request format"
+                    "@messages": [
+                        "Be sure you include choice all fields"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3/"
+            }
+
++ Response 404 (application/vnd.mason+json)
+
+    The exchange with id `entry_id` does not exist in the database.
+        
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "exchange does not exist"
+                    "@messages": [
+                        "There is no a exchange with id 1/"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3"
+            }
+
++ Response 415 (application/vnd.mason+json)
+
+    The server cannot understand the format of the response.
+    
+    + Body 
+    
+            {
+                "@error": {
+                    "@message": "Unsupported media type"
+                    "@messages": [
+                        "Use a JSON compatible format"
+                    ]
+                }
+                "resource_url": "/updown/api/exchanges/3/"
+            }
+
++ Response 500  (application/vnd.mason+json)
+
+    The server cannot store the exchange in the database.
+    
+    + Body 
+
+            {
+                "@error": {
+                    "@message": "Problem with the database"
+                    "@messages": [
+                        "Cannot access the database"
+                    ]
+                }
+                "resource_url": "/updown/api/users/3/"
+            }
+
+

@@ -1,0 +1,8 @@
+drop the server part and start from the /
+Parameters in url don't work
+merge users url wirh users url and with exchanges and choices "api/users/userid/choices" user is part of the url branch of the choices
+change the diagram, include relations, links from users to currencies ans exchanges REDO it, follow the apiary add horizontal links
+seperate the choice from user using the url scheme up^, and add a way to retrieve a single user api/user/user_id
+use uniform interface table as basis to correct the apiary and diagram
+ADD horizontal links so branches are connected 
+ONLY include GET requests in the state diagram
